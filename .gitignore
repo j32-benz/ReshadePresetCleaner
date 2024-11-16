@@ -1,0 +1,55 @@
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.userosscache
+*.suo
+*.swp
+*.tmp
+*.userprefs
+
+# Ignore Rider files
+.idea/
+*.sln.iml
+
+# Ignore Visual Studio Code workspace files
+.vscode/
+
+# Ignore Visual Studio specific files
+.vs/
+
+# Ignore log files
+*.log
+
+# Ignore NuGet packages folder
+packages/
+# Uncomment if you have a NuGet packages folder on root
+# /packages
+
+# Ignore application config files (optional)
+appsettings*.json
+
+# Ignore publish output
+publish/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore dotnet tools folder
+.dotnet_tool/
+
+# Ignore project lock files
+project.lock.json
+
+# Ignore Resharper files
+_ReSharper.Caches/
+
+# Ignore Rider files
+.idea/
+
+# Ignore JetBrains IDEs specific files
+*.sln.DotSettings.user
+
