@@ -10,12 +10,13 @@ class ReshadePresetCleaner
     {
         if (args.Length == 0)
         {
-            Console.WriteLine("Usage: ReshadePresetCleaner <path-to-ini-file> [--keep-layer]");
+            Console.WriteLine("Usage: ReshadePresetCleaner <path-to-ini-file> [--keep-layer] [--in-place]");
             return;
         }
 
         string filePath = args[0];
         bool keepLayer = args.Contains("--keep-layer");
+        bool editInPlace = args.Contains("--in-place");
 
         if (!File.Exists(filePath))
         {
@@ -33,10 +34,10 @@ class ReshadePresetCleaner
 
         var cleanedLines = RemoveUnnecessarySections(iniLines, techniques, keepLayer);
 
-        string directoryPath = Path.GetDirectoryName(filePath) ?? string.Empty;
-        string cleanedFilePath = Path.Combine(directoryPath, "cleaned_" + Path.GetFileName(filePath));
-        File.WriteAllLines(cleanedFilePath, cleanedLines);
-        Console.WriteLine($"Cleaned INI file saved to {cleanedFilePath}");
+        string outputFilePath = editInPlace ? filePath : Path.Combine(Path.GetDirectoryName(filePath) ?? string.Empty, "cleaned_" + Path.GetFileName(filePath));
+
+        File.WriteAllLines(outputFilePath, cleanedLines);
+        Console.WriteLine($"INI file updated: {outputFilePath}");
     }
 
     private static HashSet<string> ExtractTechniques(string[] lines)
